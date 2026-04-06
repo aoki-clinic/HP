@@ -15,17 +15,16 @@
 // ==========================================
 
 // ヘッダーとフッターをインクルード
+// HTMLRewriterで注入済みの場合はスキップ（Cloudflare/itscom両立）
 async function loadHTML(elementId, filePath) {
+    const element = document.getElementById(elementId);
+    if (!element || element.innerHTML.trim() !== '') return;
     try {
         const response = await fetch(filePath);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const html = await response.text();
-        const element = document.getElementById(elementId);
-        if (element) {
-            element.innerHTML = html;
-        }
+        element.innerHTML = await response.text();
     } catch (error) {
         console.error(`Error loading ${filePath}:`, error);
     }
