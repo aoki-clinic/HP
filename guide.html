@@ -9,16 +9,22 @@
     
     <!-- Google tag (gtag.js) - 遅延読み込み -->
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-JFV1CK97VG');
-        // 5秒後にgtag.jsを読み込み（初期表示に影響させない）
-        setTimeout(function() {
-            var s = document.createElement('script');
-            s.src = 'https://www.googletagmanager.com/gtag/js?id=G-JFV1CK97VG';
-            document.head.appendChild(s);
-        }, 5000);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JFV1CK97VG');
+      function loadGtag() {
+          if (window._gtagLoaded) return;
+          window._gtagLoaded = true;
+          var s = document.createElement('script');
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-JFV1CK97VG';
+          s.async = true;
+          document.head.appendChild(s);
+      }
+      ['scroll', 'click', 'touchstart'].forEach(function(e) {
+          window.addEventListener(e, loadGtag, { once: true, passive: true });
+      });
+      setTimeout(loadGtag, 5000);
     </script>
     <meta name="description" content="南房総市の病院・クリニックなら青木内科クリニック。内科・小児科・アレルギー科・呼吸器内科・糖尿病内科。風邪・咳・喘息・花粉症対応。糖尿病認定医・アレルギー学会認定医が診療。">
     <meta name="keywords" content="南房総市 クリニック,南房総市 病院,南房総市 内科,南房総市 小児科,南房総市 アレルギー,青木内科クリニック,咳,風邪,喘息,糖尿病">
@@ -36,12 +42,13 @@
     <meta property="og:locale" content="ja_JP">
     <link rel="canonical" href="http://home.a01.itscom.net/aoki/guide.html">
     
-    <!-- Bootstrap CSS with SRI -->
+    <!-- Bootstrap CSS -->
     <link href="lib/bootstrap.min.css" rel="stylesheet">
     <link rel="preload" as="style" href="lib/bootstrap-icons.min.css">
-    <link href="lib/bootstrap-icons.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="lib/bootstrap-icons.min.css"
+          rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="lib/bootstrap-icons.min.css" rel="stylesheet"></noscript>
-    <!-- Custom CSS -->
+    <!-- Custom CSS (Google Fonts @font-face含む) -->
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
@@ -380,7 +387,6 @@
 
     <div id="footer"></div>
 
-    <!-- Bootstrap Bundle with Popper and SRI -->
     <script src="lib/bootstrap.bundle.min.js" defer></script>
     <script src="js/main.js" defer></script>
 </body>

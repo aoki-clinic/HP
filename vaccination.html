@@ -15,12 +15,18 @@
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-JFV1CK97VG');
-        // 5秒後にgtag.jsを読み込み（初期表示に影響させない）
-        setTimeout(function() {
+        function loadGtag() {
+            if (window._gtagLoaded) return;
+            window._gtagLoaded = true;
             var s = document.createElement('script');
             s.src = 'https://www.googletagmanager.com/gtag/js?id=G-JFV1CK97VG';
+            s.async = true;
             document.head.appendChild(s);
-        }, 5000);
+        }
+        ['scroll', 'click', 'touchstart'].forEach(function(e) {
+            window.addEventListener(e, loadGtag, { once: true, passive: true });
+        });
+        setTimeout(loadGtag, 5000);
     </script>
     <meta name="description" content="南房総市で予防接種なら青木内科クリニック。インフルエンザ・コロナワクチン・肺炎球菌・帯状疱疹・小児各種ワクチンに対応。南房総市の病院・クリニックで接種を。">
     <meta name="keywords" content="南房総市 クリニック,南房総市 病院,南房総市 小児科,予防接種,ワクチン,インフルエンザ,肺炎球菌,帯状疱疹,小児ワクチン">
@@ -38,12 +44,13 @@
     <meta property="og:locale" content="ja_JP">
     <link rel="canonical" href="http://home.a01.itscom.net/aoki/vaccination.html">
 
-    <!-- Bootstrap CSS with SRI -->
+    <!-- Bootstrap CSS -->
     <link href="lib/bootstrap.min.css" rel="stylesheet">
     <link rel="preload" as="style" href="lib/bootstrap-icons.min.css">
-    <link href="lib/bootstrap-icons.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="lib/bootstrap-icons.min.css"
+          rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="lib/bootstrap-icons.min.css" rel="stylesheet"></noscript>
-    <!-- Custom CSS -->
+    <!-- Custom CSS (Google Fonts @font-face含む) -->
     <link href="css/style.css" rel="stylesheet">
 </head>
 
@@ -168,7 +175,6 @@
     <!-- Footer -->
     <div id="footer"></div>
 
-    <!-- Bootstrap Bundle with Popper and SRI -->
     <script src="lib/bootstrap.bundle.min.js" defer></script>
     <script src="js/main.js" defer></script>
     <script src="js/vaccinations.js" defer></script>

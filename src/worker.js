@@ -1,0 +1,66 @@
+/**
+ * Cloudflare Worker - HTMLRewriter によるheader/footer サーバーサイドインクルード
+ * 
+ * 静的アセットの配信 + HTMLページへの header.html / footer.html 注入
+ * itscom並行運用中はクライアント側 loadHTML() がフォールバックとして残る
+ */
+
+// header/footer HTMLのキャッシュ（Worker起動中は保持）
+let headerCache = null;
+let footerCache = null;
+
+/**
+ * parts/header.html と parts/footer.html を取得（キャッシュ付き）
+ */
+async function getPartials(env, url) {
+    if (!headerCache || !footerCache) {
+        const base = new URL('/', url).href;
+        const [headerRes, footerRes] = await Promise.all([
+            env.ASSETS.fetch(new URL('/parts/header.html', base)),
+            env.ASSETS.fetch(new URL('/parts/footer.html', base)),
+        ]);
+        if (headerRes.ok) headerCache = await headerRes.text();
+        if (footerRes.ok) footerCache = await footerRes.text();
+    }
+    return { header: headerCache || '', footer: footerCache || '' };
+}
+
+export default {
+    async fetch(request, env) {
+        // 静的アセットからレスポンスを取得
+        const response = await env.ASSETS.fetch(request);
+
+        // HTMLでないレスポンスはそのまま返す
+        const contentType = response.headers.get('content-type') || '';
+        if (!contentType.includes('text/html')) {
+            return response;
+        }
+
+        // parts/ 自体へのリクエストはそのまま返す（無限ループ防止）
+        const url = new URL(request.url);
+        if (url.pathname.startsWith('/parts/')) {
+            return response;
+        }
+
+        // header/footer のHTML取得
+        const { header, footer } = await getPartials(env, request.url);
+
+        // HTMLRewriter で #header と #footer に注入
+        return new HTMLRewriter()
+            .on('#header', {
+                element(el) {
+                    if (header) {
+                        el.setInnerContent(header, { html: true });
+                    }
+                }
+            })
+            .on('#footer', {
+                element(el) {
+                    if (footer) {
+                        el.setInnerContent(footer, { html: true });
+                    }
+                }
+            })
+            .transform(response);
+    }
+};

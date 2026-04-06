@@ -1,1 +1,5 @@
 .git
+src
+node_modules
+wrangler.jsonc
+.assetsignore
