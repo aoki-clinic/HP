@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "displayStartDate": "2026-03-13",
+    "startDate": "2026-03-21",
+    "endDate": "2026-03-21",
+    "startTime": "15:30",
+    "endTime": null,
+    "type": "partial",
+    "title": "一部休診のお知らせ",
+    "description": "3月21日の営業時間は15:30までとなります。",
+    "important": true
+  }
+]

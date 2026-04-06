@@ -1,0 +1,2194 @@
+/* ==========================================
+   カスタムCSS - 青木内科クリニック
+   
+   目次:
+   1. カスタムカラー定義
+   2. 基本設定
+   3. アクセシビリティ対応
+   4. ヘッダー・ナビゲーション
+   5. ヒーローセクション
+   6. セクションスタイル
+   7. コンポーネント
+   8. レスポンシブ対応
+   9. アニメーション
+   10. ダークモード対応
+   ========================================== */
+
+/* ==========================================
+   1. カスタムカラー定義
+   ========================================== */
+:root {
+    --primary-green: #48944f;
+    --dark-green: #367a3d;
+    --light-green: #e8f5e9;
+    --accent-green: #5bb862;
+    --pale-green: #f3faf4;
+    --accent-gold: #c9a84c;
+    --accent-gold-light: #f5f0e0;
+    --text-dark: #333d34;
+    --text-muted: #5a6b5c;
+    /* コントラスト比改善: 4.5:1以上 */
+    --bg-light: #f8fbf9;
+    --bg-warm: #fbfbf8;
+    --focus-outline: #0d6efd;
+    --shadow-sm: 0 2px 8px rgba(58, 125, 68, 0.08);
+    --shadow-md: 0 4px 20px rgba(58, 125, 68, 0.12);
+    --shadow-lg: 0 8px 40px rgba(58, 125, 68, 0.15);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+}
+
+/* ==========================================
+   2. 基本設定
+   ========================================== */
+
+/* Bootstrap Icons font-display 最適化 */
+@font-face {
+    font-family: 'bootstrap-icons';
+    font-display: swap;
+    src: url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/fonts/bootstrap-icons.woff2") format("woff2"),
+         url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/fonts/bootstrap-icons.woff") format("woff");
+}
+
+body {
+    font-family: 'Noto Sans JP', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================
+   3. アクセシビリティ対応
+   ========================================== */
+
+/* フォーカスリング改善 */
+*:focus-visible {
+    outline: 3px solid var(--focus-outline);
+    outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--focus-outline);
+    outline-offset: 2px;
+}
+
+/* コントラスト改善 */
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* ==========================================
+   4. ヘッダー・ナビゲーション
+   ========================================== */
+.navbar {
+    padding: 0.8rem 0;
+    transition: all 0.3s ease;
+}
+
+header.sticky-top {
+    border-bottom: 2px solid transparent;
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+header.sticky-top::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-green), var(--accent-gold), var(--primary-green));
+}
+
+.navbar-brand {
+    max-width: 350px;
+    overflow: visible;
+}
+
+.header-brand-text {
+    overflow: visible;
+}
+
+.clinic-name {
+    font-size: 1.5rem;
+    font-family: 'Noto Serif JP', serif;
+    color: var(--primary-green);
+    font-weight: 700;
+    white-space: nowrap;
+    display: block;
+    letter-spacing: 0.05em;
+}
+
+.clinic-tagline {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    white-space: normal;
+    overflow: visible;
+    line-height: 1.4;
+    max-width: 500px;
+    letter-spacing: 0.03em;
+}
+
+/* レスポンシブ対応（ヘッダー） */
+@media (max-width: 991.98px) {
+    .navbar-brand {
+        max-width: none;
+        flex-shrink: 1;
+    }
+
+    .clinic-name {
+        white-space: normal;
+        word-break: keep-all;
+    }
+
+    .clinic-tagline {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .clinic-name {
+        font-size: 1.3rem;
+    }
+
+    .navbar-brand {
+        max-width: calc(100vw - 160px);
+    }
+}
+
+.navbar-nav .nav-link {
+    color: var(--text-dark);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--accent-gold);
+    transition: width 0.3s ease;
+    border-radius: 1px;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    width: 60%;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--primary-green);
+}
+
+.navbar-nav .nav-link i {
+    margin-right: 0.3rem;
+}
+
+/* コンタクトバー */
+.contact-bar {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+    color: white;
+}
+
+.contact-bar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-bar a:hover {
+    text-decoration: underline;
+}
+
+.phone-number {
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+}
+
+/* ヒーローセクション */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section .carousel-item {
+    height: 520px;
+}
+
+.hero-section .carousel-item img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.hero-section .carousel-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(232, 245, 233, 0.15) 50%, rgba(255, 255, 240, 0.1) 100%);
+    z-index: 1;
+}
+
+.hero-section .carousel-caption {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 2.5rem 3rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    bottom: 3rem;
+    z-index: 2;
+}
+
+.hero-section .carousel-caption .display-4 {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.hero-section .carousel-caption .lead {
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.hero-section .carousel-caption h2 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.hero-section .carousel-control-prev,
+.hero-section .carousel-control-next {
+    z-index: 3;
+    width: 5%;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.hero-section .carousel-control-prev:hover,
+.hero-section .carousel-control-next:hover {
+    opacity: 1;
+}
+
+/* セクションタイトル */
+.section-title {
+    position: relative;
+}
+
+.section-title h2 {
+    color: var(--primary-green);
+    position: relative;
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-green), var(--accent-gold));
+    border-radius: 2px;
+}
+
+.section-title h2::before {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(calc(-50% + 30px));
+    width: 8px;
+    height: 3px;
+    background: var(--accent-gold);
+    border-radius: 2px;
+}
+
+.section-title .text-muted {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+}
+
+/* お知らせセクション */
+.notice-section .alert-info {
+    border-left: 4px solid var(--primary-green);
+    background: linear-gradient(135deg, var(--light-green) 0%, #f0f9f1 100%);
+    border-color: transparent;
+    border-left-color: var(--primary-green);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+}
+
+/* 診療科目カード */
+.medical-card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: none;
+    border-top: 3px solid var(--primary-green);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.medical-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(180deg, var(--pale-green) 0%, transparent 40%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.medical-card:hover::before {
+    opacity: 1;
+}
+
+.medical-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg) !important;
+}
+
+.icon-circle {
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(58, 125, 68, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.medical-card:hover .icon-circle {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.icon-circle i {
+    font-size: 2rem;
+    color: white;
+}
+
+.medical-card .card-title {
+    color: var(--primary-green);
+    font-weight: 600;
+    margin-top: 1rem;
+    letter-spacing: 0.03em;
+}
+
+/* 診療時間テーブル */
+.hours-table {
+    margin-bottom: 0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.hours-table th {
+    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+    color: white;
+    font-weight: 600;
+    padding: 1rem;
+    font-size: 0.95rem;
+}
+
+.hours-table td {
+    padding: 1rem;
+    vertical-align: middle;
+    transition: background-color 0.3s ease;
+}
+
+.hours-table .open {
+    background-color: var(--light-green);
+    color: var(--dark-green);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.hours-table .closed {
+    background-color: #fce4e4;
+    color: #c62828;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* クイックアクセスカード */
+.access-card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: none;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.access-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg) !important;
+}
+
+.access-card img {
+    max-height: 200px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* card-img-top のアスペクト比保持 */
+.card-img-top {
+    height: auto;
+}
+
+.access-card:hover img {
+    transform: scale(1.03);
+}
+
+/* 施設カード */
+.facility-card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-top: 3px solid var(--primary-green);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.facility-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg) !important;
+}
+
+.facility-card .card-title {
+    color: var(--primary-green);
+    font-weight: 600;
+}
+
+/* フッター */
+.footer {
+    background: linear-gradient(135deg, #24573a 0%, #3a7d50 50%, #24573a 100%);
+    color: white;
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-gold), var(--primary-green), var(--accent-gold));
+}
+
+.footer h5 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+}
+
+.footer a:hover {
+    color: var(--accent-gold) !important;
+    text-decoration: none;
+}
+
+/* スクロールトップボタン */
+#scrollToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    border: none;
+    box-shadow: var(--shadow-md);
+    background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
+    transition: all 0.3s ease;
+}
+
+#scrollToTop:hover {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ボタンスタイル */
+.btn-success {
+    background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
+    border: none;
+    transition: all 0.3s ease;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    padding: 0.6rem 1.5rem;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(58, 125, 68, 0.35);
+}
+
+.btn-outline-success {
+    color: var(--primary-green);
+    border-color: var(--primary-green);
+    transition: all 0.3s ease;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    border-width: 2px;
+}
+
+.btn-outline-success:hover {
+    background-color: var(--primary-green);
+    border-color: var(--primary-green);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(58, 125, 68, 0.25);
+}
+
+.btn-lg {
+    padding: 0.75rem 2rem;
+    border-radius: var(--radius-sm);
+}
+
+/* ==========================================
+   セクション背景・装飾
+   ========================================== */
+
+/* お知らせセクション */
+.notice-section {
+    background: linear-gradient(180deg, var(--pale-green) 0%, #ffffff 100%);
+    position: relative;
+}
+
+.notice-section h3 {
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+/* 診療時間セクション */
+.hours-section {
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--pale-green) 50%, var(--bg-light) 100%);
+    position: relative;
+}
+
+.hours-section .card {
+    border-radius: var(--radius-lg);
+    border: none;
+    overflow: hidden;
+}
+
+/* 診療科目セクション */
+.medical-section {
+    position: relative;
+    background: #ffffff;
+}
+
+.medical-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary-green), var(--accent-gold), var(--primary-green), transparent);
+}
+
+/* 施設紹介セクション */
+.facilities-section {
+    background: linear-gradient(180deg, var(--bg-light) 0%, var(--pale-green) 50%, var(--bg-light) 100%);
+    position: relative;
+}
+
+.facilities-section .facility-card img {
+    transition: transform 0.4s ease;
+}
+
+.facilities-section .facility-card:hover img {
+    transform: scale(1.03);
+}
+
+/* SEOセクション */
+.local-seo-section {
+    background: var(--bg-warm);
+    position: relative;
+}
+
+.local-seo-section .card {
+    border-radius: var(--radius-lg);
+    border: none;
+    border-left: 4px solid var(--accent-gold);
+}
+
+.local-seo-section .card .card-body {
+    position: relative;
+}
+
+.local-seo-section .card .card-body::before {
+    content: '\201C';
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    font-size: 4rem;
+    color: var(--accent-gold);
+    opacity: 0.2;
+    line-height: 1;
+}
+
+/* 予防接種カードセクション */
+.vaccination-card-section {
+    background: linear-gradient(180deg, #ffffff 0%, var(--pale-green) 100%);
+}
+
+.vaccination-card-section .card {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: none;
+    border-top: 4px solid var(--primary-green);
+}
+
+/* アクセスセクション */
+.access-section {
+    position: relative;
+    background: #ffffff;
+}
+
+.access-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+}
+
+/* クイックアクセスセクション */
+.quick-access-section {
+    background: linear-gradient(180deg, var(--bg-light) 0%, var(--pale-green) 30%, var(--bg-light) 100%);
+    position: relative;
+}
+
+.quick-access-section .card {
+    border-radius: var(--radius-md);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.quick-access-section .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, var(--pale-green) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.quick-access-section .card:hover::before {
+    opacity: 1;
+}
+
+.quick-access-section .card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg) !important;
+}
+
+.quick-access-section .card i {
+    transition: transform 0.3s ease;
+}
+
+.quick-access-section .card:hover i {
+    transform: scale(1.15);
+}
+
+.quick-access-section .card .card-title {
+    font-weight: 600;
+    color: var(--primary-green);
+    letter-spacing: 0.03em;
+}
+
+/* ==========================================
+   汎用カードスタイル改善
+   ========================================== */
+.card {
+    border-radius: var(--radius-md);
+    transition: box-shadow 0.3s ease;
+}
+
+.shadow-sm {
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.shadow {
+    box-shadow: var(--shadow-md) !important;
+}
+
+/* text-success の色を統一（コントラスト比改善: 4.75:1） */
+.text-success {
+    color: var(--dark-green) !important;
+}
+
+/* bg-light の色更新 */
+.bg-light {
+    background-color: var(--bg-light) !important;
+}
+
+/* ==========================================
+   スクロールアニメーション
+   ========================================== */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.scroll-animate.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .clinic-name {
+        font-size: 1.2rem;
+    }
+
+    .clinic-tagline {
+        font-size: 0.65rem;
+    }
+
+    .hero-section .carousel-item {
+        height: 320px;
+    }
+
+    .hero-section .carousel-caption {
+        padding: 1.5rem 2rem;
+    }
+
+    .hero-section .carousel-caption .display-4 {
+        font-size: 1.5rem;
+    }
+
+    .hero-section .carousel-caption .lead {
+        font-size: 0.85rem;
+    }
+
+    .contact-bar {
+        font-size: 0.85rem;
+    }
+
+    .phone-number {
+        font-size: 1rem;
+    }
+
+    .contact-bar .col-md-6 {
+        margin-bottom: 0.5rem;
+    }
+
+    .section-title h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hours-table {
+        font-size: 0.85rem;
+    }
+
+    .hours-table th,
+    .hours-table td {
+        padding: 0.5rem 0.25rem;
+    }
+
+    .hero-section .carousel-item {
+        height: 260px;
+    }
+
+    .hero-section .carousel-caption {
+        padding: 1rem 1.2rem;
+        bottom: 1.5rem;
+    }
+}
+
+/* アニメーション */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* ページ固有のスタイル */
+
+/* クリニック案内ページ */
+.greeting-section img {
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+.greeting-text {
+    line-height: 2;
+    text-align: justify;
+    font-size: 1.05rem;
+}
+
+/* 院内施設案内ページ */
+.facility-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.facility-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    transition: transform 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.facility-item:hover img {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-md);
+}
+
+/* アクセスページ */
+.map-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: var(--radius-md);
+}
+
+/* コンタクトページ */
+.contact-info-card {
+    border-left: 5px solid var(--primary-green);
+}
+
+.contact-info-card i {
+    font-size: 2rem;
+    color: var(--primary-green);
+}
+
+/* 施設紹介ページ */
+.facility-gallery img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.facility-gallery img:hover {
+    transform: scale(1.05);
+}
+
+.facility-details img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+/* パートナーシップページ */
+.partnership-card {
+    border-left: 4px solid var(--primary-green);
+    transition: all 0.3s ease;
+    border-radius: var(--radius-sm);
+}
+
+.partnership-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateX(5px);
+    border-left-color: var(--accent-gold);
+}
+
+.partnership-card h4 {
+    color: var(--primary-green);
+}
+
+/* 採用情報ページ */
+.recruit-table th {
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.recruit-table td {
+    vertical-align: middle;
+}
+
+.recruit-table tr:hover {
+    background-color: rgba(92, 184, 92, 0.05);
+}
+
+/* 予防接種ページ */
+.vaccination-table th {
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.vaccination-table td {
+    vertical-align: middle;
+    font-size: 1.1rem;
+}
+
+.vaccination-table .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-green);
+}
+
+.vaccination-table .price.discount {
+    color: #dc3545;
+}
+
+.vaccination-table tr:hover {
+    background-color: rgba(92, 184, 92, 0.05);
+}
+
+/* お知らせセクション */
+.notice-section {
+    background: linear-gradient(180deg, var(--pale-green) 0%, #ffffff 100%);
+}
+
+.news-item {
+    transition: all 0.3s ease;
+    border-radius: var(--radius-sm);
+}
+
+.news-item:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-sm);
+}
+
+.news-item h6 {
+    color: var(--dark-green);
+    font-weight: 600;
+}
+
+/* ==========================================
+   パンくずリスト
+   ========================================== */
+.breadcrumb-nav {
+    background-color: var(--bg-light);
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.breadcrumb {
+    margin-bottom: 0;
+    background: transparent;
+    padding: 0;
+}
+
+.breadcrumb-item a {
+    color: var(--primary-green);
+    text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: var(--text-muted);
+}
+
+/* ==========================================
+   ライトボックス（ギャラリー）
+   ========================================== */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-overlay.active {
+    display: flex;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+    position: relative;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.gallery-item {
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.gallery-item img {
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* ==========================================
+   prefers-reduced-motion（アニメーション無効化）
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .carousel-item {
+        transition: none;
+    }
+
+    .medical-card:hover,
+    .access-card:hover,
+    .facility-card:hover,
+    .partnership-card:hover {
+        transform: none;
+    }
+
+    .news-item:hover {
+        transform: none;
+    }
+
+    .btn:hover {
+        transform: none;
+    }
+}
+
+/* ==========================================
+   ダークモード対応（Bootstrap data-bs-theme方式）
+   OS/ブラウザ設定に連動（prefers-color-scheme）
+   ========================================== */
+[data-bs-theme="dark"] {
+    --text-dark: #e0e0e0;
+    --text-muted: #b0b0b0;
+    --bg-light: #1a1a1a;
+    --bg-warm: #1e1e1a;
+    --primary-green: #7dcf7d;
+    --dark-green: #5cb85c;
+    --light-green: #1e3d1e;
+    --pale-green: #1a2d1a;
+    --accent-green: #68c468;
+    --accent-gold: #d4b85c;
+    --accent-gold-light: #2d2a1e;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.4);
+
+    body {
+        background-color: #121212;
+        color: var(--text-dark);
+    }
+
+    .bg-light {
+        background-color: #1e1e1e !important;
+    }
+
+    .bg-white {
+        background-color: #2d2d2d !important;
+    }
+
+    .card {
+        background-color: #2d2d2d;
+        border-color: #404040;
+    }
+
+    .navbar {
+        background-color: #2d2d2d !important;
+    }
+
+    header.sticky-top {
+        background: rgba(45, 45, 45, 0.98) !important;
+    }
+
+    header.sticky-top::after {
+        background: linear-gradient(90deg, #5cb85c, #d4b85c, #5cb85c);
+    }
+
+    .navbar-nav .nav-link {
+        color: var(--text-dark);
+    }
+
+    .navbar-nav .nav-link::after {
+        background: var(--accent-gold);
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+        color: var(--primary-green);
+    }
+
+    .clinic-name {
+        color: #7dcf7d;
+    }
+
+    .clinic-tagline {
+        color: var(--text-muted);
+    }
+
+    .table {
+        color: var(--text-dark);
+    }
+
+    .table-bordered {
+        border-color: #404040;
+    }
+
+    .table-bordered> :not(caption)>*>* {
+        border-color: #404040;
+    }
+
+    .hours-table th {
+        background: linear-gradient(135deg, #2d7a2d, #1e5c1e);
+    }
+
+    .hours-table td {
+        background-color: #2d2d2d;
+    }
+
+    .hours-table .open {
+        background-color: #1e3d1e;
+        color: #7dcf7d;
+    }
+
+    .hours-table .closed {
+        background-color: #3d1e1e;
+        color: #cf7d7d;
+    }
+
+    .alert-info {
+        background-color: #1e3d3d;
+        border-color: #3d8b8b;
+        color: #e0e0e0;
+    }
+
+    .alert-warning {
+        background-color: #3d3d1e;
+        border-color: #8b8b3d;
+        color: #e0e0e0;
+    }
+
+    .alert-danger {
+        background-color: #3d1e1e;
+        border-color: #8b3d3d;
+        color: #e0e0e0;
+    }
+
+    .alert-success {
+        background-color: #1e3d1e;
+        border-color: #3d8b3d;
+        color: #e0e0e0;
+    }
+
+    .text-muted {
+        color: var(--text-muted) !important;
+    }
+
+    .text-success {
+        color: #7dcf7d !important;
+    }
+
+    .section-title h2 {
+        color: #7dcf7d;
+    }
+
+    .section-title h2::after {
+        background: #7dcf7d;
+    }
+
+    /* ヒーローセクション */
+    .hero-section .carousel-caption {
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+    }
+
+    .hero-section .carousel-caption .display-4,
+    .hero-section .carousel-caption .lead {
+        color: #fff;
+    }
+
+    /* カード類 */
+    .medical-card {
+        background-color: #2d2d2d;
+        border-top-color: #5cb85c;
+    }
+
+    .medical-card .card-title {
+        color: #7dcf7d;
+    }
+
+    .icon-circle {
+        background: linear-gradient(135deg, #5cb85c, #3d8b3d);
+    }
+
+    .facility-card {
+        background-color: #2d2d2d;
+        border-top-color: #5cb85c;
+    }
+
+    .facility-card .card-title {
+        color: #7dcf7d;
+    }
+
+    .access-card {
+        background-color: #2d2d2d;
+    }
+
+    .partnership-card {
+        background-color: #2d2d2d;
+        border-left-color: #5cb85c;
+    }
+
+    .partnership-card h4 {
+        color: #7dcf7d;
+    }
+
+    /* アコーディオン */
+    .accordion-button {
+        background-color: #2d2d2d;
+        color: var(--text-dark);
+    }
+
+    .accordion-button:not(.collapsed) {
+        background-color: #3d5d3d;
+        color: #e0e0e0;
+    }
+
+    .accordion-button::after {
+        filter: invert(1);
+    }
+
+    .accordion-body {
+        background-color: #2d2d2d;
+        color: var(--text-dark);
+    }
+
+    .accordion-item {
+        background-color: #2d2d2d;
+        border-color: #404040;
+    }
+
+    /* リスト */
+    .list-group-item {
+        background-color: #2d2d2d;
+        color: var(--text-dark);
+        border-color: #404040;
+    }
+
+    /* フォーム */
+    .form-control,
+    .form-select {
+        background-color: #2d2d2d;
+        color: var(--text-dark);
+        border-color: #404040;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        background-color: #3d3d3d;
+        border-color: #5cb85c;
+        color: var(--text-dark);
+    }
+
+    .form-control::placeholder {
+        color: #999999;
+    }
+
+    /* ボタン */
+    .btn-success {
+        background: linear-gradient(135deg, #357a35, #2d7a2d);
+        color: #ffffff;
+    }
+
+    .btn-success:hover {
+        background: linear-gradient(135deg, #2d7a2d, #357a35);
+        color: #ffffff;
+    }
+
+    .btn-outline-success {
+        color: #7dcf7d;
+        border-color: #7dcf7d;
+    }
+
+    .btn-outline-success:hover {
+        background-color: #5cb85c;
+        border-color: #5cb85c;
+        color: #fff;
+    }
+
+    /* シャドウ */
+    .shadow,
+    .shadow-sm {
+        box-shadow: 0 0.125rem 0.25rem rgba(255, 255, 255, 0.05) !important;
+    }
+
+    /* ボーダー */
+    .border,
+    .border-top,
+    .border-bottom,
+    .border-start,
+    .border-end {
+        border-color: #404040 !important;
+    }
+
+    .border-success {
+        border-color: #5cb85c !important;
+    }
+
+    /* パンくずリスト */
+    .breadcrumb-nav {
+        background-color: #1e1e1e !important;
+        border-color: #404040 !important;
+    }
+
+    .breadcrumb-item a {
+        color: #7dcf7d;
+    }
+
+    .breadcrumb-item.active {
+        color: var(--text-muted);
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+        color: var(--text-muted);
+    }
+
+    /* フッター */
+    .footer {
+        background: linear-gradient(135deg, #1e3d1e 0%, #0d1f0d 100%);
+    }
+
+    /* スクロールトップボタン */
+    #scrollToTop {
+        background: linear-gradient(135deg, #357a35, #2d7a2d);
+    }
+
+    /* カルーセル停止ボタン */
+    .carousel-pause-btn {
+        background: rgba(0, 0, 0, 0.7);
+    }
+
+    /* ライトボックス */
+    .lightbox-overlay {
+        background: rgba(0, 0, 0, 0.95);
+    }
+
+    /* テーブル */
+    .table-striped>tbody>tr:nth-of-type(odd)>* {
+        background-color: rgba(255, 255, 255, 0.03);
+        color: var(--text-dark);
+    }
+
+    .table-hover>tbody>tr:hover>* {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: var(--text-dark);
+    }
+
+    /* 予防接種・採用テーブル */
+    .vaccination-table th,
+    .recruit-table th {
+        background-color: #3d5d3d;
+    }
+
+    .vaccination-table td,
+    .recruit-table td {
+        background-color: #2d2d2d;
+    }
+
+    /* リンク */
+    a {
+        color: #7dcf7d;
+    }
+
+    a:hover {
+        color: #9de09d;
+    }
+
+    /* コード・プレフォーマット */
+    code,
+    pre {
+        background-color: #1e1e1e;
+        color: #7dcf7d;
+    }
+
+    /* モーダル */
+    .modal-content {
+        background-color: #2d2d2d;
+        border-color: #404040;
+    }
+
+    .modal-header,
+    .modal-footer {
+        border-color: #404040;
+    }
+
+    .btn-close {
+        filter: invert(1);
+    }
+
+    /* ドロップダウン */
+    .dropdown-menu {
+        background-color: #2d2d2d;
+        border-color: #404040;
+    }
+
+    .dropdown-item {
+        color: var(--text-dark);
+    }
+
+    .dropdown-item:hover,
+    .dropdown-item:focus {
+        background-color: #3d3d3d;
+        color: var(--text-dark);
+    }
+
+    /* ページネーション */
+    .page-link {
+        background-color: #2d2d2d;
+        border-color: #404040;
+        color: #7dcf7d;
+    }
+
+    .page-link:hover {
+        background-color: #3d3d3d;
+        border-color: #5cb85c;
+        color: #9de09d;
+    }
+
+    .page-item.active .page-link {
+        background-color: #5cb85c;
+        border-color: #5cb85c;
+    }
+
+    /* バッジ */
+    .badge.bg-success {
+        background-color: #5cb85c !important;
+    }
+
+    .badge.bg-light {
+        background-color: #3d3d3d !important;
+        color: var(--text-dark) !important;
+    }
+
+    .badge.bg-warning {
+        background-color: #d4b85c !important;
+        color: #212529 !important;
+    }
+
+    /* スピナー */
+    .spinner-border.text-success {
+        color: #7dcf7d !important;
+    }
+
+    /* hr */
+    hr {
+        border-color: #404040;
+        opacity: 0.5;
+    }
+
+    /* 選択ハイライト */
+    ::selection {
+        background-color: #5cb85c;
+        color: #fff;
+    }
+
+    ::-moz-selection {
+        background-color: #5cb85c;
+        color: #fff;
+    }
+
+    /* セクション背景のダークモード対応 */
+    .notice-section,
+    .hours-section,
+    .facilities-section,
+    .quick-access-section {
+        background: #1a1a1a !important;
+    }
+
+    .local-seo-section,
+    .vaccination-card-section {
+        background: #161616 !important;
+    }
+
+    .medical-section::before,
+    .access-section::before {
+        opacity: 0.3;
+    }
+
+    .local-seo-section .card {
+        border-left-color: #d4b85c;
+    }
+
+    .notice-section .alert-info {
+        background: linear-gradient(135deg, #1e3d1e 0%, #1a2d1a 100%);
+    }
+
+    /* セクション背景（ハードコード #ffffff 対応） */
+    .medical-section {
+        background: #1a1a1a;
+    }
+
+    .access-section {
+        background: #1a1a1a;
+    }
+
+    .notice-section {
+        background: linear-gradient(180deg, var(--pale-green) 0%, #1a1a1a 100%);
+    }
+
+    .vaccination-card-section {
+        background: linear-gradient(180deg, #1a1a1a 0%, var(--pale-green) 100%);
+    }
+
+    /* ヒーローオーバーレイ */
+    .hero-section .carousel-item::after {
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(30, 61, 30, 0.2) 50%, rgba(0, 0, 0, 0.15) 100%);
+    }
+
+    .hero-section .carousel-caption {
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* 予防接種セクション */
+    .vaccination-section .card {
+        border-color: #404040 !important;
+    }
+
+    .vaccination-section .card .card {
+        border-color: #404040 !important;
+    }
+
+    .vaccination-table .price.discount {
+        color: #cf7d7d;
+    }
+
+    .vaccination-table tr:hover,
+    .recruit-table tr:hover {
+        background-color: rgba(92, 184, 92, 0.1);
+    }
+
+    /* コンタクトページ */
+    .contact-info-card {
+        background-color: #2d2d2d;
+        border-left-color: #5cb85c;
+    }
+
+    /* お知らせ */
+    .news-item:hover {
+        background-color: rgba(92, 184, 92, 0.08);
+    }
+
+    /* ナビゲーション トグル */
+    .navbar-toggler {
+        border-color: #404040;
+    }
+
+    .navbar-toggler-icon {
+        filter: invert(1);
+    }
+}
+
+/* ==========================================
+   印刷用スタイル
+   ========================================== */
+@media print {
+
+    .navbar,
+    .footer,
+    #scrollToTop,
+    .carousel-control-prev,
+    .carousel-control-next,
+    .btn {
+        display: none !important;
+    }
+
+    body {
+        color: #000;
+        background: #fff;
+    }
+
+    .card {
+        border: 1px solid #000;
+        box-shadow: none;
+    }
+
+    a[href]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #666;
+    }
+
+    .hours-table .open,
+    .hours-table .closed {
+        background: transparent !important;
+        border: 1px solid #000;
+    }
+}
+
+/* ==========================================
+   予防接種（Vaccination）ページ
+   ========================================== */
+
+/* 予防接種ページのカード全体にボーダーと間隔を追加 */
+.vaccination-section .card {
+    border: 1px solid #dee2e6 !important;
+    border-top: 3px solid #198754 !important;
+    margin-bottom: 3.5rem !important;
+}
+
+.vaccination-section .card .card {
+    border-top: none !important;
+    border: 1px solid #dee2e6 !important;
+}
+
+/* ==========================================
+   キャップバックス（CAPVAXIVE）ページ
+   ========================================== */
+
+/* 目次 */
+.capvaxive-toc {
+    padding-left: 1.5rem;
+}
+
+.capvaxive-toc li {
+    margin-bottom: 0.5rem;
+}
+
+.capvaxive-toc li a {
+    color: var(--primary-green);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.capvaxive-toc li a:hover {
+    color: var(--dark-green);
+    text-decoration: underline;
+}
+
+/* セクションヘッダー */
+.capvaxive-section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.capvaxive-section-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(58, 125, 68, 0.3);
+}
+
+.capvaxive-section-title {
+    color: var(--primary-green);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.03em;
+    margin: 0;
+}
+
+/* 症状カード */
+.capvaxive-symptom-card {
+    background: white;
+    border-radius: var(--radius-md);
+    border: 2px solid var(--light-green);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.capvaxive-symptom-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* 統計カード */
+.capvaxive-stat-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--light-green);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.capvaxive-stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.capvaxive-stat-icon {
+    font-size: 2.5rem;
+    color: var(--primary-green);
+}
+
+.capvaxive-stat-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.capvaxive-stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary-green);
+    line-height: 1.1;
+    margin-bottom: 0.25rem;
+    font-family: 'Noto Serif JP', serif;
+}
+
+.capvaxive-stat-unit {
+    font-size: 1.5rem;
+}
+
+/* フロー図（感染メカニズム） */
+.capvaxive-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+}
+
+.capvaxive-flow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 0 0 auto;
+}
+
+.capvaxive-flow-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 4px 15px rgba(58, 125, 68, 0.3);
+}
+
+.capvaxive-flow-icon--warning {
+    background: linear-gradient(135deg, #f0ad4e, #ec971f);
+    box-shadow: 0 4px 15px rgba(240, 173, 78, 0.3);
+}
+
+.capvaxive-flow-icon--danger {
+    background: linear-gradient(135deg, #d9534f, #c9302c);
+    box-shadow: 0 4px 15px rgba(217, 83, 79, 0.3);
+}
+
+.capvaxive-flow-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.capvaxive-flow-arrow {
+    font-size: 1.5rem;
+    color: var(--primary-green);
+    margin: 0 0.5rem 1.5rem;
+}
+
+@media (max-width: 575.98px) {
+    .capvaxive-flow {
+        flex-direction: column;
+    }
+
+    .capvaxive-flow-arrow {
+        transform: rotate(90deg);
+        margin: 0.25rem 0;
+    }
+}
+
+/* イラストプレースホルダー */
+.capvaxive-illust-box {
+    border: 2px dashed var(--light-green);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    background: var(--pale-green);
+}
+
+.capvaxive-illust-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 2rem;
+    background: white;
+    border-radius: var(--radius-sm);
+    color: var(--primary-green);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.capvaxive-illust-placeholder i {
+    font-size: 1.5rem;
+}
+
+/* 比較テーブル */
+.capvaxive-compare-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+}
+
+.capvaxive-compare-table thead th {
+    vertical-align: middle;
+    text-align: center;
+    font-weight: 600;
+    padding: 1rem;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.capvaxive-compare-header {
+    background: #f8f9fa;
+    color: var(--text-dark);
+    width: 30%;
+}
+
+.capvaxive-compare-highlight {
+    background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
+    color: white !important;
+    width: 35%;
+}
+
+.capvaxive-compare-highlight small {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.capvaxive-compare-other {
+    background: #e9ecef;
+    color: #343a40 !important;
+    width: 35%;
+}
+
+.capvaxive-compare-other small {
+    color: #6c757d;
+}
+
+.capvaxive-compare-table tbody td {
+    padding: 0.85rem 1rem;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.capvaxive-compare-label {
+    text-align: left !important;
+    font-weight: 500;
+    background: #fafafa;
+}
+
+.capvaxive-compare-highlight-cell {
+    background: var(--pale-green);
+}
+
+/* ポイントカード */
+.capvaxive-point-card {
+    border-top: 3px solid var(--primary-green);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.capvaxive-point-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg) !important;
+}
+
+.capvaxive-point-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(58, 125, 68, 0.3);
+}
+
+/* 推奨対象カード */
+.capvaxive-recommend-card {
+    border-left: 4px solid var(--primary-green);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.capvaxive-recommend-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md) !important;
+}
+
+.capvaxive-recommend-icon {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--light-green);
+    color: var(--primary-green);
+    font-size: 1.2rem;
+}
+
+/* 対象者リスト */
+.capvaxive-target-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.capvaxive-target-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--pale-green);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--light-green);
+    transition: box-shadow 0.3s ease;
+}
+
+.capvaxive-target-item:hover {
+    box-shadow: var(--shadow-sm);
+}
+
+.capvaxive-target-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    padding: 0.35rem 0.75rem;
+    background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.capvaxive-target-content {
+    flex: 1;
+}
+
+/* 副反応カード */
+.capvaxive-side-effect-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: #fff8e1;
+    border-radius: var(--radius-sm);
+    border: 1px solid #ffe082;
+    height: 100%;
+}
+
+.capvaxive-side-effect-card i {
+    font-size: 1.5rem;
+    min-width: 28px;
+}
+
+/* レスポンシブ */
+@media (max-width: 767.98px) {
+    .capvaxive-section-title {
+        font-size: 1.2rem;
+    }
+
+    .capvaxive-section-number {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        font-size: 1.1rem;
+    }
+
+    .capvaxive-stat-number {
+        font-size: 2.2rem;
+    }
+
+    .capvaxive-compare-table {
+        font-size: 0.85rem;
+    }
+
+    .capvaxive-compare-table thead th {
+        padding: 0.6rem 0.4rem;
+        font-size: 0.8rem;
+    }
+
+    .capvaxive-compare-table tbody td {
+        padding: 0.6rem 0.4rem;
+    }
+
+    .capvaxive-target-item {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* ダークモード対応 */
+[data-bs-theme="dark"] {
+    .capvaxive-symptom-card {
+        background: #1a2d1a;
+        border-color: #2d4a2d;
+    }
+
+    .capvaxive-stat-card {
+        background: #1a2d1a;
+        border-color: #2d4a2d;
+    }
+
+    .capvaxive-illust-box {
+        border-color: #2d4a2d;
+        background: #0f1e0f;
+    }
+
+    .capvaxive-illust-placeholder {
+        background: #1a2d1a;
+    }
+
+    .capvaxive-compare-label {
+        background: #1a2d1a;
+    }
+
+    .capvaxive-compare-highlight-cell {
+        background: rgba(72, 148, 79, 0.15);
+    }
+
+    .capvaxive-recommend-card {
+        border-left-color: var(--accent-green);
+    }
+
+    .capvaxive-target-item {
+        background: #1a2d1a;
+        border-color: #2d4a2d;
+    }
+
+    .capvaxive-side-effect-card {
+        background: #2d2a0f;
+        border-color: #4d4520;
+    }
+
+    .capvaxive-compare-header {
+        background: #2d2d2d;
+        color: var(--text-dark);
+    }
+
+    .capvaxive-compare-other {
+        background: #3d3d3d;
+        color: var(--text-dark) !important;
+    }
+
+    .capvaxive-compare-other small {
+        color: var(--text-muted);
+    }
+
+    .capvaxive-compare-table {
+        border-color: #404040;
+    }
+
+    .capvaxive-compare-table thead th {
+        border-bottom-color: #404040;
+    }
+
+    .capvaxive-section-title {
+        color: var(--primary-green);
+    }
+
+    .capvaxive-flow-text {
+        color: var(--text-dark);
+    }
+
+    .capvaxive-point-card {
+        border-top-color: var(--primary-green);
+    }
+}

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+    <!-- トップページ -->
+    <url>
+        <loc>http://home.a01.itscom.net/aoki/index.html</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- クリニック案内 -->
+    <url>
+        <loc>http://home.a01.itscom.net/aoki/guide.html</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- 院内施設案内 -->
+    <url>
+        <loc>http://home.a01.itscom.net/aoki/facilities.html</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- アクセス -->
+    <url>
+        <loc>http://home.a01.itscom.net/aoki/access.html</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- 予防接種 -->
+    <url>
+        <loc>http://home.a01.itscom.net/aoki/vaccination.html</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- 問診表ダウンロード -->
+    <url>
+        <loc>http://home.a01.itscom.net/aoki/monshin.html</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- お知らせ -->
+    <url>
+        <loc>http://home.a01.itscom.net/aoki/news.html</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- 採用情報 -->
+    <url>
+        <loc>http://home.a01.itscom.net/aoki/recruit.html</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- 地域連携・取り組み -->
+    <url>
+        <loc>http://home.a01.itscom.net/aoki/torikumi.html</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- 地域連携・パートナーシップ -->
+    <url>
+        <loc>http://home.a01.itscom.net/aoki/partnership.html</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- お問い合わせ -->
+    <url>
+        <loc>http://home.a01.itscom.net/aoki/contact.html</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <!-- 初めての方へ -->
+    <url>
+        <loc>http://home.a01.itscom.net/aoki/firstvisit.html</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- よくあるご質問 -->
+    <url>
+        <loc>http://home.a01.itscom.net/aoki/faq.html</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- 肺炎球菌ワクチン「キャップバックス」 -->
+    <url>
+        <loc>http://home.a01.itscom.net/aoki/capvaxive.html</loc>
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- サイトマップ -->
+    <url>
+        <loc>http://home.a01.itscom.net/aoki/sitemap-page.html</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <!-- 404ページ -->
+    <url>
+        <loc>http://home.a01.itscom.net/aoki/404.html</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.1</priority>
+    </url>
+
+</urlset>

@@ -1,0 +1,404 @@
+{
+  "lastUpdated": "2026-04-04",
+  "priceDisclaimer": "掲載されている価格は更新時点のものです。実際の価格と異なる場合がございますので、正確な料金は受付またはお電話にてご確認ください。",
+  "scheduleNotice": "予防接種には接種スケジュール（対象年齢・接種間隔など）が定められています。詳しくは各自治体のホームページをご確認いただくか、各自治体へお問い合わせください。",
+  "officialLinks": [
+    {
+      "name": "南房総市",
+      "url": "https://www.city.minamiboso.chiba.jp/category/17-3-0-0-0-0-0-0-0-0.html",
+      "label": "南房総市ホームページ"
+    },
+    {
+      "name": "鴨川市",
+      "url": "https://www.city.kamogawa.lg.jp/site/nobinobi-kamokko/7756.html",
+      "label": "鴨川市ホームページ"
+    },
+    {
+      "name": "館山市",
+      "url": "https://www.city.tateyama.chiba.jp/kenkou/page000606.html",
+      "label": "館山市ホームページ"
+    },
+    {
+      "name": "鋸南町",
+      "url": "https://www.town.kyonan.chiba.jp/soshiki/14/2278.html",
+      "label": "鋸南町ホームページ"
+    }
+  ],
+  "vaccines": [
+    {
+      "id": 1,
+      "name": "肺炎球菌ワクチン（キャップバックス）",
+      "icon": "bi-lungs-fill",
+      "description": "21種類の肺炎球菌の型に対応した結合型ワクチン（PCV21）です。免疫記憶を伴う抗体産生が期待でき、1回の接種で長期間の効果持続が報告されています。",
+      "category": "任意接種",
+      "requiresReservation": true,
+      "reservationMethod": "電話",
+      "reservationNote": "事前予約が必要です。お電話にてご予約ください。",
+      "ageRestriction": {
+        "minAge": "18歳以上",
+        "maxAge": null,
+        "note": "18歳以上の成人が対象です。特に65歳以上の方や基礎疾患のある方に推奨されています。"
+      },
+      "displayStartDate": null,
+      "displayEndDate": null,
+      "order": 2,
+      "priceCategories": [
+        {
+          "label": "一般（全額自己負担）",
+          "icon": "bi-person-fill",
+          "ageCondition": "18歳以上",
+          "price": 14000,
+          "priceNote": "1回接種",
+          "targetArea": null,
+          "isSubsidized": false
+        }
+      ],
+      "notes": [
+        "公費助成の対象外のため、費用は全額自己負担となります。",
+        "過去に肺炎球菌ワクチンを接種したことがある方は、前回接種した時期を必ずお知らせください。",
+        "詳しくはキャップバックス専用ページをご覧ください。"
+      ],
+      "detailPage": "capvaxive.html",
+      "bringItems": [
+        "診察券",
+        "マイナンバーカードまたは資格確認書",
+        "母子手帳やワクチン手帳等のワクチン接種記録（お持ちの方）"
+      ],
+      "contraindications": []
+    },
+    {
+      "id": 2,
+      "name": "ヒブ（アクトヒブ）",
+      "icon": "bi-virus2",
+      "description": "ヒブ（インフルエンザ菌b型）による感染症を予防するワクチンです。",
+      "category": "小児予防接種",
+      "requiresReservation": true,
+      "reservationMethod": "電話",
+      "reservationNote": "事前予約が必要です。お取り寄せのため、1週間以上前にご連絡をお願いします。",
+      "ageRestriction": null,
+      "displayStartDate": "2025-01-01",
+      "displayEndDate": "2099-12-31",
+      "order": 10,
+      "priceCategories": [],
+      "notes": [],
+      "bringItems": [
+        "診察券",
+        "マイナンバーカードまたは資格確認書",
+        "母子手帳やワクチン手帳等のワクチン接種記録（お持ちの方）"
+      ],
+      "contraindications": []
+    },
+    {
+      "id": 3,
+      "name": "小児肺炎球菌",
+      "icon": "bi-lungs-fill",
+      "description": "肺炎球菌による感染症を予防するワクチンです。",
+      "category": "小児予防接種",
+      "requiresReservation": true,
+      "reservationMethod": "電話",
+      "reservationNote": "事前予約が必要です。お取り寄せのため、1週間以上前にご連絡をお願いします。",
+      "ageRestriction": null,
+      "displayStartDate": "2025-01-01",
+      "displayEndDate": "2099-12-31",
+      "order": 11,
+      "priceCategories": [],
+      "notes": [],
+      "bringItems": [
+        "診察券",
+        "マイナンバーカードまたは資格確認書",
+        "母子手帳やワクチン手帳等のワクチン接種記録（お持ちの方）"
+      ],
+      "contraindications": []
+    },
+    {
+      "id": 4,
+      "name": "5種混合（DPT-IPV-Hib）",
+      "icon": "bi-shield-fill-check",
+      "description": "ジフテリア・百日せき・破傷風・ポリオ・ヒブの5種混合ワクチンです。",
+      "category": "小児予防接種",
+      "requiresReservation": true,
+      "reservationMethod": "電話",
+      "reservationNote": "事前予約が必要です。お取り寄せのため、1週間以上前にご連絡をお願いします。",
+      "ageRestriction": null,
+      "displayStartDate": "2025-01-01",
+      "displayEndDate": "2099-12-31",
+      "order": 12,
+      "priceCategories": [],
+      "notes": [],
+      "bringItems": [
+        "診察券",
+        "マイナンバーカードまたは資格確認書",
+        "母子手帳やワクチン手帳等のワクチン接種記録（お持ちの方）"
+      ],
+      "contraindications": []
+    },
+    {
+      "id": 5,
+      "name": "2種混合（DT）",
+      "icon": "bi-shield-fill-check",
+      "description": "ジフテリア・破傷風の2種混合ワクチンです。",
+      "category": "小児予防接種",
+      "requiresReservation": true,
+      "reservationMethod": "電話",
+      "reservationNote": "事前予約が必要です。お取り寄せのため、1週間以上前にご連絡をお願いします。",
+      "ageRestriction": null,
+      "displayStartDate": "2025-01-01",
+      "displayEndDate": "2099-12-31",
+      "order": 13,
+      "priceCategories": [],
+      "notes": [],
+      "bringItems": [
+        "診察券",
+        "マイナンバーカードまたは資格確認書",
+        "母子手帳やワクチン手帳等のワクチン接種記録（お持ちの方）"
+      ],
+      "contraindications": []
+    },
+    {
+      "id": 6,
+      "name": "B型肝炎（小児）",
+      "icon": "bi-virus",
+      "description": "B型肝炎ウイルスによる感染症を予防するワクチンです。",
+      "category": "小児予防接種",
+      "requiresReservation": true,
+      "reservationMethod": "電話",
+      "reservationNote": "事前予約が必要です。お取り寄せのため、1週間以上前にご連絡をお願いします。",
+      "ageRestriction": null,
+      "displayStartDate": "2025-01-01",
+      "displayEndDate": "2099-12-31",
+      "order": 14,
+      "priceCategories": [],
+      "notes": [],
+      "bringItems": [
+        "診察券",
+        "マイナンバーカードまたは資格確認書",
+        "母子手帳やワクチン手帳等のワクチン接種記録（お持ちの方）"
+      ],
+      "contraindications": []
+    },
+    {
+      "id": 7,
+      "name": "ロタウイルス",
+      "icon": "bi-virus2",
+      "description": "ロタウイルスによる胃腸炎を予防するワクチンです。",
+      "category": "小児予防接種",
+      "requiresReservation": true,
+      "reservationMethod": "電話",
+      "reservationNote": "事前予約が必要です。お取り寄せのため、1週間以上前にご連絡をお願いします。",
+      "ageRestriction": null,
+      "displayStartDate": "2025-01-01",
+      "displayEndDate": "2099-12-31",
+      "order": 15,
+      "priceCategories": [],
+      "notes": [],
+      "bringItems": [
+        "診察券",
+        "マイナンバーカードまたは資格確認書",
+        "母子手帳やワクチン手帳等のワクチン接種記録（お持ちの方）"
+      ],
+      "contraindications": []
+    },
+    {
+      "id": 8,
+      "name": "麻しん風しん混合（MR）",
+      "icon": "bi-shield-fill-check",
+      "description": "麻しん（はしか）と風しんを予防する混合ワクチンです。",
+      "category": "小児予防接種",
+      "requiresReservation": true,
+      "reservationMethod": "電話",
+      "reservationNote": "事前予約が必要です。お取り寄せのため、1週間以上前にご連絡をお願いします。",
+      "ageRestriction": null,
+      "displayStartDate": "2025-01-01",
+      "displayEndDate": "2099-12-31",
+      "order": 16,
+      "priceCategories": [],
+      "notes": [],
+      "bringItems": [
+        "診察券",
+        "マイナンバーカードまたは資格確認書",
+        "母子手帳やワクチン手帳等のワクチン接種記録（お持ちの方）"
+      ],
+      "contraindications": []
+    },
+    {
+      "id": 9,
+      "name": "水痘（水ぼうそう）",
+      "icon": "bi-droplet-fill",
+      "description": "水痘（水ぼうそう）を予防するワクチンです。",
+      "category": "小児予防接種",
+      "requiresReservation": true,
+      "reservationMethod": "電話",
+      "reservationNote": "事前予約が必要です。お取り寄せのため、1週間以上前にご連絡をお願いします。",
+      "ageRestriction": null,
+      "displayStartDate": "2025-01-01",
+      "displayEndDate": "2099-12-31",
+      "order": 19,
+      "priceCategories": [],
+      "notes": [],
+      "bringItems": [
+        "診察券",
+        "マイナンバーカードまたは資格確認書",
+        "母子手帳やワクチン手帳等のワクチン接種記録（お持ちの方）"
+      ],
+      "contraindications": []
+    },
+    {
+      "id": 10,
+      "name": "日本脳炎",
+      "icon": "bi-bug-fill",
+      "description": "日本脳炎ウイルスによる感染症を予防するワクチンです。",
+      "category": "小児予防接種",
+      "requiresReservation": true,
+      "reservationMethod": "電話",
+      "reservationNote": "事前予約が必要です。お取り寄せのため、1週間以上前にご連絡をお願いします。",
+      "ageRestriction": null,
+      "displayStartDate": "2025-01-01",
+      "displayEndDate": "2099-12-31",
+      "order": 20,
+      "priceCategories": [],
+      "notes": [],
+      "bringItems": [
+        "診察券",
+        "マイナンバーカードまたは資格確認書",
+        "母子手帳やワクチン手帳等のワクチン接種記録（お持ちの方）"
+      ],
+      "contraindications": []
+    },
+    {
+      "id": 11,
+      "name": "おたふくかぜ",
+      "icon": "bi-emoji-neutral-fill",
+      "description": "おたふくかぜ（流行性耳下腺炎）を予防するワクチンです。",
+      "category": "小児予防接種",
+      "requiresReservation": true,
+      "reservationMethod": "電話",
+      "reservationNote": "事前予約が必要です。お取り寄せのため、1週間以上前にご連絡をお願いします。",
+      "ageRestriction": null,
+      "displayStartDate": "2025-01-01",
+      "displayEndDate": "2099-12-31",
+      "order": 21,
+      "priceCategories": [],
+      "notes": [],
+      "bringItems": [
+        "診察券",
+        "マイナンバーカードまたは資格確認書",
+        "母子手帳やワクチン手帳等のワクチン接種記録（お持ちの方）"
+      ],
+      "contraindications": []
+    },
+    {
+      "id": 12,
+      "name": "子宮頸がん（HPVワクチン）",
+      "icon": "bi-gender-female",
+      "description": "子宮頸がんの原因となるHPV（ヒトパピローマウイルス）を予防するワクチンです。",
+      "category": "小児予防接種",
+      "requiresReservation": true,
+      "reservationMethod": "電話",
+      "reservationNote": "事前予約が必要です。お取り寄せのため、1週間以上前にご連絡をお願いします。",
+      "ageRestriction": null,
+      "displayStartDate": "2025-01-01",
+      "displayEndDate": "2099-12-31",
+      "order": 22,
+      "priceCategories": [],
+      "notes": [],
+      "bringItems": [
+        "診察券",
+        "マイナンバーカードまたは資格確認書",
+        "母子手帳やワクチン手帳等のワクチン接種記録（お持ちの方）"
+      ],
+      "contraindications": []
+    },
+    {
+      "id": 13,
+      "name": "B型肝炎（10歳以上）",
+      "icon": "bi-virus",
+      "description": "B型肝炎ウイルスによる感染症を予防するワクチンです。",
+      "category": "小児・成人予防接種",
+      "requiresReservation": true,
+      "reservationMethod": "電話",
+      "reservationNote": "事前予約が必要です。お取り寄せのため、1週間以上前にご連絡をお願いします。",
+      "ageRestriction": {
+        "minAge": "10歳",
+        "maxAge": null,
+        "note": "10歳以上の方が対象です。"
+      },
+      "displayStartDate": "2025-01-01",
+      "displayEndDate": "2099-12-31",
+      "order": 31,
+      "priceCategories": [],
+      "notes": [],
+      "bringItems": [
+        "診察券",
+        "マイナンバーカードまたは資格確認書",
+        "母子手帳やワクチン手帳等のワクチン接種記録（お持ちの方）"
+      ],
+      "contraindications": []
+    },
+    {
+      "id": 14,
+      "name": "破傷風",
+      "icon": "bi-bandaid-fill",
+      "description": "破傷風を予防するワクチンです。",
+      "category": "任意接種",
+      "requiresReservation": true,
+      "reservationMethod": "電話",
+      "reservationNote": "事前予約が必要です。お取り寄せのため、1週間以上前にご連絡をお願いします。",
+      "ageRestriction": null,
+      "displayStartDate": "2025-01-01",
+      "displayEndDate": "2099-12-31",
+      "order": 32,
+      "priceCategories": [],
+      "notes": [],
+      "bringItems": [
+        "診察券",
+        "マイナンバーカードまたは資格確認書",
+        "母子手帳やワクチン手帳等のワクチン接種記録（お持ちの方）"
+      ],
+      "contraindications": []
+    },
+    {
+      "id": 15,
+      "name": "帯状疱疹",
+      "icon": "bi-lightning-fill",
+      "description": "帯状疱疹を予防するワクチンです。",
+      "category": "任意接種",
+      "requiresReservation": true,
+      "reservationMethod": "電話",
+      "reservationNote": "事前予約が必要です。お取り寄せのため、1週間以上前にご連絡をお願いします。",
+      "ageRestriction": null,
+      "displayStartDate": "2025-01-01",
+      "displayEndDate": "2099-12-31",
+      "order": 33,
+      "priceCategories": [],
+      "notes": [],
+      "bringItems": [
+        "診察券",
+        "マイナンバーカードまたは資格確認書",
+        "母子手帳やワクチン手帳等のワクチン接種記録（お持ちの方）"
+      ],
+      "contraindications": []
+    },
+    {
+      "id": 16,
+      "name": "RSウイルス",
+      "icon": "bi-lungs-fill",
+      "description": "RSウイルスによる感染症を予防するワクチンです。",
+      "category": "任意接種",
+      "requiresReservation": true,
+      "reservationMethod": "電話",
+      "reservationNote": "事前予約が必要です。お取り寄せのため、1週間以上前にご連絡をお願いします。",
+      "ageRestriction": null,
+      "displayStartDate": "2025-01-01",
+      "displayEndDate": "2099-12-31",
+      "order": 34,
+      "priceCategories": [],
+      "notes": [],
+      "bringItems": [
+        "診察券",
+        "マイナンバーカードまたは資格確認書",
+        "母子手帳やワクチン手帳等のワクチン接種記録（お持ちの方）"
+      ],
+      "contraindications": []
+    }
+  ]
+}

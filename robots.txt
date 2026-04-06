@@ -1,0 +1,15 @@
+# robots.txt for 青木内科クリニック
+
+User-agent: *
+Allow: /
+
+# サイトマップの場所
+Sitemap: http://home.a01.itscom.net/aoki/sitemap.xml
+
+# クロールの遅延（サーバー負荷軽減のため）
+Crawl-delay: 1
+
+# 特定のディレクトリを除外する場合（必要に応じてコメント解除）
+# Disallow: /cgi-bin/
+# Disallow: /tmp/
+# Disallow: /admin/
