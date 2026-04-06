@@ -26,7 +26,13 @@ async function getPartials(env, url) {
 }
 
 export default {
-    async fetch(request, env) {
+    async fetch(request, env, ctx) {
+        // ASSETS binding の存在確認
+        if (!env?.ASSETS) {
+            console.error('ASSETS binding is undefined. env keys:', Object.keys(env || {}));
+            return new Response('ASSETS binding not available', { status: 500 });
+        }
+
         // 静的アセットからレスポンスを取得
         const response = await env.ASSETS.fetch(request);
 
