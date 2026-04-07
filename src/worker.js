@@ -35,15 +35,25 @@ export default {
 
         // 静的アセットからレスポンスを取得
         const response = await env.ASSETS.fetch(request);
+        const url = new URL(request.url);
 
-        // HTMLでないレスポンスはそのまま返す
+        // HTMLでないレスポンスはそのまま返す（静的アセットにキャッシュヘッダー付与）
         const contentType = response.headers.get('content-type') || '';
         if (!contentType.includes('text/html')) {
+            // フォント・CSS・JS・画像に長期キャッシュを設定
+            if (url.pathname.match(/\.(woff2|css|js|webp|ico)$/)) {
+                const newHeaders = new Headers(response.headers);
+                newHeaders.set('Cache-Control', 'public, max-age=31536000, immutable');
+                return new Response(response.body, {
+                    status: response.status,
+                    statusText: response.statusText,
+                    headers: newHeaders,
+                });
+            }
             return response;
         }
 
         // parts/ 自体へのリクエストはそのまま返す（無限ループ防止）
-        const url = new URL(request.url);
         if (url.pathname.startsWith('/parts/')) {
             return response;
         }

@@ -53,7 +53,11 @@
     <link href="lib/bootstrap-icons.min.css"
           rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="lib/bootstrap-icons.min.css" rel="stylesheet"></noscript>
-    <!-- Custom CSS (Google Fonts @font-face含む) -->
+    <!-- Google Fonts @font-face（非レンダリングブロック） -->
+    <link rel="preload" as="style" href="fonts/font-faces.css">
+    <link href="fonts/font-faces.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="fonts/font-faces.css" rel="stylesheet"></noscript>
+    <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
 
     <!-- LCP画像のプリロード -->

@@ -18,8 +18,7 @@
    1. カスタムカラー定義
    ========================================== */
 
-/* Google Fonts @font-face (self-hosted) */
-@import url('../fonts/font-faces.css');
+/* Google Fonts @font-face: HTML側で非同期読み込み（fonts/font-faces.css） */
 :root {
     --primary-green: #48944f;
     --dark-green: #367a3d;
