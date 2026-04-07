@@ -39,9 +39,8 @@
     <link href="lib/bootstrap-icons.min.css"
           rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="lib/bootstrap-icons.min.css" rel="stylesheet"></noscript>
-    <!-- Google Fonts @font-face（非レンダリングブロック） -->
-    <link rel="preload" as="style" href="fonts/font-faces.css">
-    <link href="fonts/font-faces.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <!-- Google Fonts @font-face（ページ描画後に遅延読込） -->
+    <script>window.addEventListener('load',function(){var l=document.createElement('link');l.rel='stylesheet';l.href='fonts/font-faces.css';document.head.appendChild(l)});</script>
     <noscript><link href="fonts/font-faces.css" rel="stylesheet"></noscript>
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
